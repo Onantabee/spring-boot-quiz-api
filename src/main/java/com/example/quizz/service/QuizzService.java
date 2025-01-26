@@ -26,4 +26,12 @@ public class QuizzService {
         }
         return questionRepository.save(question);
     }
+
+    public boolean isAnswerCorrect(Integer questionId, Integer answerId) {
+        Question question = questionRepository.findById(questionId)
+                .orElseThrow(() -> new RuntimeException("Question not found"));
+
+        return question.getAnswers().stream()
+                .anyMatch(answer -> answer.getId().equals(answerId) && answer.isCorrect());
+    }
 }

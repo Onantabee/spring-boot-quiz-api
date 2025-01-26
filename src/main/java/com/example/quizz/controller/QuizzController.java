@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/quiz")
+@CrossOrigin("*")
 public class QuizzController {
     @Autowired
     private QuizzService quizzService;
@@ -26,5 +27,10 @@ public class QuizzController {
     @PostMapping("/questions")
     public Question createQuestion(@RequestBody Question question) {
         return quizzService.createQuestion(question);
+    }
+
+    @PostMapping("/validate-answer")
+    public boolean validateAnswer(@RequestParam Integer questionId, @RequestParam Integer answerId) {
+        return quizzService.isAnswerCorrect(questionId, answerId);
     }
 }
