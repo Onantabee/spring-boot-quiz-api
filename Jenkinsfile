@@ -24,7 +24,7 @@ pipeline {
 
     post {
         always {
-            slackSend channel: '#test', color: 'green', message: "The pipeline ${currentBuild.fullDisplayName} result."
+            slackSend channel: '#team', color: 'green', message: "The pipeline ${currentBuild.fullDisplayName} result."
         }
     }
 }
