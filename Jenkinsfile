@@ -21,4 +21,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            slackSend channel: '#test', color: 'green', message: "The pipeline ${currentBuild.fullDisplayName} result."
+        }
+    }
 }
