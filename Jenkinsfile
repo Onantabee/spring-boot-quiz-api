@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'ApacheMaven'
+    }
+
     stages {
         stage('Checkout') {
             steps {
