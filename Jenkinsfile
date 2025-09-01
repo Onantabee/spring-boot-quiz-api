@@ -6,6 +6,10 @@ pipeline {
         maven 'ApacheMaven'
     }
 
+    options {
+            skipDefaultCheckout(true)
+        }
+
     stages {
         stage('Checkout') {
             steps {
