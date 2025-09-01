@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -7,28 +6,18 @@ pipeline {
     }
 
     options {
-            skipDefaultCheckout(true)
-        }
+        skipDefaultCheckout true
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Onantabee/spring-boot-quiz-api.git', branch: 'main'
+                checkout scm
             }
         }
-        stage('Compile') {
+        stage('Build') {
             steps {
-                sh 'mvn compile'
-            }
-        }
-        stage('Test & Code Coverage') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
-        stage('Package') {
-            steps {
-                sh 'mvn package'
+                sh 'mvn clean install'
             }
         }
     }
